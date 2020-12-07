@@ -29,9 +29,9 @@ Class inheritance is just reusing implementation, interface inheritance truely d
 
 **Favor object composition over class inheritance.**
 
-Class inheritance and **object composition** are two most common ways to reuse functionalities. Class inheritance is a more transparent reuse (white-box reuse), since the superclass' internals are often exposed to the subclass; object composition are black-box reuse, since it requires clear definition of objects' interfaces and no internal detail is visible (objects are black boxes).
-
 #### Class Inheritance
+
+Class inheritance is a more transparent reuse (white-box reuse), since the superclass' internals are often exposed to the subclass.
 
 Pros:
 
@@ -48,6 +48,8 @@ Cons:
 - If any part of the inherited implementation is not appropriate for new problem, superclass must be rewritten or replaced.
 
 #### Object Composition
+
+Object composition are black-box reuse, since it requires clear definition of objects' interfaces and no internal detail is visible (objects are black boxes).
 
 Pros:
 
