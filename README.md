@@ -18,13 +18,17 @@
 
 ## High Level Stuff
 
+*A design choice is a good choice only when it simplifies more than it complicates.*
+
 The hard part about object-oriented design is decomposing a system into objects. Many factors influence the decomposition, often in conflicting ways. There will always be disagreement on which approach is best.
 
 Strict modeling may reflect today's needs but not tomorrow, abstraction is key to making design flexible.
 
-A design choice is a good choice only when it simplifies more than it complicates.
+The key to maximizing reuse lies in anticipating new change, design patterns help us do that by ensuring the system can change in specific ways.
 
 *An object-oriented program's run-time structure often bears little resemblance to its code structure.* Code structure is frozen at compile-time, but object structure is a complicated network of objects. Do not attempt to understand one from another. The aggregation or acquaintance relationship can be difficult to differentiate by reading code. Because of that, *the code won't reveal everything about how the system will work*, the run-time structure must be imposed more by the designer than the language. Many design patterns aren't obvious from the code itself unless the code reader understands the patter.
+
+It is important to design the system to limit its platform dependencies.
 
 ## Program to an interface, not an implementation.
 
@@ -34,7 +38,7 @@ Class inheritance is just reusing implementation, interface inheritance truely d
 
 The three most common ways to reuse functionality.
 
-*Favor object composition over class inheritance.*
+*Favor object composition over class inheritance.* However, heavy use of object composition can make designs harder to understand.
 
 ### Class Inheritance
 
@@ -93,4 +97,27 @@ In delegation pattern, the object which owns the delgation object can be thought
 
 Common design patterns that use delegation are: State, Strategy, Visitor, Mediator, Chain of Responsibility, Bridge.
 
+## Designing for Change
 
+Common design mistakes that limits the system's ability to change and adapt, and design patterns that are potential solutions:
+
+1. Creating an object by specifying a class explicitly: Abstract Factory, Factory method, Prototype.
+2. Dependence on specific operations: Chain of Responsibility, Command.
+3. Dependence on hardware or software platform: Abstract Factory, Bridge.
+4. Dependence on object representations or implementations: Abstract Factory, Bridge, Memento, Proxy.
+5. Algorithmic dependencies: Builder, Iterator, Strategy, Template Method, Visitor.
+6. Tight coupling: Abstract Factory, Bridge, Chain of Responsibility, Command, Facade, Mediator, Observer.
+7. Extending functionality by subclassing: Bridge, Chain of Responsibility, Composite, Decorator, Observer, Strategy.
+8. Inability to alter class convinientyly: Adapter, Decorator, Visitor.
+
+### Design Priorities for Different Types of Programs
+
+A toolkit specifies utilities can be used to build software for a specific application domain, the implementer needs to design the application and call code in the toolkit they want to reuse; a framework designs the application, and calls code written by the implementer, thus the implementer has less design choices to make.
+
+Loose coupling, flexibility, extensibility and good documentation are extremly important in the design of a framework.
+
+| Program Type | Main Focus | Difficulty (Video Game Metric) |
+| - | - | - |
+| Application | internal reuse, maintainability, extention | Hard |
+| Toolkit | code reuse | Nighmare |
+| Framework | design reuse | Hell |
