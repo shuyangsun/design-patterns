@@ -10,26 +10,33 @@
 - **Dynamic binding**: a request is not bounded to a particular implementation, and the implementation can be substituted during run-time, this substitution is called **polymorphism**.
 - A **class** is the implementation of an interface, and an object is the **instance** of that class, the object's internal data is made up of **instance variables**.
 - **Abstract calss**es may defer some or all of its operation implementation to their **subclass**, methods defined but not implemented are called **abstract operation**s.
-
-## Important Leanrings
-
-The hard part about object-oriented design is decomposing a system into objects. Many factors influence the decomposition, often in conflicting ways. There will always be disagreement on which approach is best.
-
-Strict modeling may reflect today's needs but not tomorrow, abstraction is key to making design flexible.
+- Object **aggregation**: an object *owns* another object, or *is part of* another object; object **acquaintance**: an object simply *knows of* another object, or is simplying *using* another object. Object aggregation implies that the two objects have identical lifetimes. In diagrams an arrowhead line (<>--->) represents with a diamond base represents the object at the base aggregates (owns) the object at the head; the object at the head acquaintances the object at the base.
 
 ### Type vs. Class
 
 *It is very important to understand the difference between type and class*. Types are only concerned of the object's interface, while classes are concerned of the object's internal state and implementation. Same goes with interface inheritance and class inheritance. Class inheritance defines an object's implementation in terms of another object's implementation, it is a mechanism for code and representation sharing; interface inheritance describes when an object can be used in place of another.
 
-### Program to an interface, not an implementation.
+## High Level Stuff
+
+The hard part about object-oriented design is decomposing a system into objects. Many factors influence the decomposition, often in conflicting ways. There will always be disagreement on which approach is best.
+
+Strict modeling may reflect today's needs but not tomorrow, abstraction is key to making design flexible.
+
+A design choice is a good choice only when it simplifies more than it complicates.
+
+*An object-oriented program's run-time structure often bears little resemblance to its code structure.* Code structure is frozen at compile-time, but object structure is a complicated network of objects. Do not attempt to understand one from another. The aggregation or acquaintance relationship can be difficult to differentiate by reading code. Because of that, *the code won't reveal everything about how the system will work*, the run-time structure must be imposed more by the designer than the language. Many design patterns aren't obvious from the code itself unless the code reader understands the patter.
+
+## Program to an interface, not an implementation.
 
 Class inheritance is just reusing implementation, interface inheritance truely defines the relationship an interaction for the client. Creational patterns (e.g., AbstractFactory, Builder, Factory Method, Prototype, Singleton) ensure the system is written in terms of interfaces, not implementations.
 
-### Class Inheritance vs. Object Composition
+## Class Inheritance vs. Object Composition vs. Parameterized Types (Generics)
 
-**Favor object composition over class inheritance.**
+The three most common ways to reuse functionality.
 
-#### Class Inheritance
+*Favor object composition over class inheritance.*
+
+### Class Inheritance
 
 Class inheritance is a more transparent reuse (white-box reuse), since the superclass' internals are often exposed to the subclass.
 
@@ -46,8 +53,9 @@ Cons:
 - Subclass implementation is bound up.
 - Change in the superclass will force the subclass to change.
 - If any part of the inherited implementation is not appropriate for new problem, superclass must be rewritten or replaced.
+- *Designers often overuse inheritance as a reuse technique.*
 
-#### Object Composition
+### Object Composition
 
 Object composition are black-box reuse, since it requires clear definition of objects' interfaces and no internal detail is visible (objects are black boxes).
 
@@ -61,4 +69,28 @@ Pros:
 
 Cons:
 
-- Interfaces must be carefullly designed (not really a con).
+- Interfaces must be carefullly designed.
+- Dynamic, highly parameterized software is harder to understand than more static software.
+- Run-time inefficiencies (*but the human inefficiencies are more costly in the long run*).
+
+### Parameterized Types
+
+Pros:
+
+- Defined statically at compile-time.
+
+Cons:
+
+- Cannot change implementation during run-time (inheritance defined at compile-time).
+
+## Delegation
+
+Two objects handle a request: receiver delegates operations to its **delegate**.
+
+In class inheritance, the operation can access parent class object by using `this` or `self`, in delegation, this is achieved by the receiving object passing itself to the delegation as a reference.
+
+In delegation pattern, the object which owns the delgation object can be thought of as the "subclass" in class inheritance. For example, in class inheritance the class `Dog` would be a subclass of `Animal`; in delegation the class `Dog` would *have* an `Animal`.
+
+Common design patterns that use delegation are: State, Strategy, Visitor, Mediator, Chain of Responsibility, Bridge.
+
+
