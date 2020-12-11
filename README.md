@@ -30,6 +30,8 @@ The key to maximizing reuse lies in anticipating new change, design patterns hel
 
 It is important to design the system to limit its platform dependencies.
 
+Design patterns often achieve their benefits by introducing additional indirections and complications, *do not use design patterns indiscriminately*.
+
 ## Program to an interface, not an implementation.
 
 Class inheritance is just reusing implementation, interface inheritance truly defines the relationship an interaction for the client. Creational patterns (e.g., AbstractFactory, Builder, Factory Method, Prototype, Singleton) ensure the system is written in terms of interfaces, not implementations.
