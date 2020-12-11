@@ -3,14 +3,14 @@
 ## Definitions
 
 - An **object** packages both data and procedures (**methods** or **operations**) that operates on that data.
-- An object performas an operation when it receives **request** (or **message**) from a **client**.
+- An object performs an operation when it receives **request** (or **message**) from a **client**.
 - **Encapsulation**: requests are the *only* way to get an object to execute an operation, operations are the *only* way to change an object's internal data.
 - The operation's name, objects it takes as parameters and the objects return value combined is called the operation's **signature**. A set of defined signatures is called the **interface**.
 - A **type** is the name of a particular interface, two objects with the same type need only share parts of their interfaces. A **subtype**'s interface is a superset of its **supertype**.
 - **Dynamic binding**: a request is not bounded to a particular implementation, and the implementation can be substituted during run-time, this substitution is called **polymorphism**.
 - A **class** is the implementation of an interface, and an object is the **instance** of that class, the object's internal data is made up of **instance variables**.
-- **Abstract calss**es may defer some or all of its operation implementation to their **subclass**, methods defined but not implemented are called **abstract operation**s.
-- Object **aggregation**: an object *owns* another object, or *is part of* another object; object **acquaintance**: an object simply *knows of* another object, or is simplying *using* another object. Object aggregation implies that the two objects have identical lifetimes. In diagrams an arrowhead line (<>--->) represents with a diamond base represents the object at the base aggregates (owns) the object at the head; the object at the head acquaintances the object at the base.
+- **Abstract class**es may defer some or all of its operation implementation to their **subclass**, methods defined but not implemented are called **abstract operation**s.
+- Object **aggregation**: an object *owns* another object, or *is part of* another object; object **acquaintance**: an object simply *knows of* another object, or is simply *using* another object. Object aggregation implies that the two objects have identical lifetimes. In diagrams an arrowhead line (<>--->) represents with a diamond base represents the object at the base aggregates (owns) the object at the head; the object at the head acquaintances the object at the base.
 
 ### Type vs. Class
 
@@ -32,7 +32,7 @@ It is important to design the system to limit its platform dependencies.
 
 ## Program to an interface, not an implementation.
 
-Class inheritance is just reusing implementation, interface inheritance truely defines the relationship an interaction for the client. Creational patterns (e.g., AbstractFactory, Builder, Factory Method, Prototype, Singleton) ensure the system is written in terms of interfaces, not implementations.
+Class inheritance is just reusing implementation, interface inheritance truly defines the relationship an interaction for the client. Creational patterns (e.g., AbstractFactory, Builder, Factory Method, Prototype, Singleton) ensure the system is written in terms of interfaces, not implementations.
 
 ## Class Inheritance vs. Object Composition vs. Parameterized Types (Generics)
 
@@ -73,7 +73,7 @@ Pros:
 
 Cons:
 
-- Interfaces must be carefullly designed.
+- Interfaces must be carefully designed.
 - Dynamic, highly parameterized software is harder to understand than more static software.
 - Run-time inefficiencies (*but the human inefficiencies are more costly in the long run*).
 
@@ -93,7 +93,7 @@ Two objects handle a request: receiver delegates operations to its **delegate**.
 
 In class inheritance, the operation can access parent class object by using `this` or `self`, in delegation, this is achieved by the receiving object passing itself to the delegation as a reference.
 
-In delegation pattern, the object which owns the delgation object can be thought of as the "subclass" in class inheritance. For example, in class inheritance the class `Dog` would be a subclass of `Animal`; in delegation the class `Dog` would *have* an `Animal`.
+In delegation pattern, the object which owns the delegation object can be thought of as the "subclass" in class inheritance. For example, in class inheritance the class `Dog` would be a subclass of `Animal`; in delegation the class `Dog` would *have* an `Animal`.
 
 Common design patterns that use delegation are: State, Strategy, Visitor, Mediator, Chain of Responsibility, Bridge.
 
@@ -108,16 +108,16 @@ Common design mistakes that limits the system's ability to change and adapt, and
 5. Algorithmic dependencies: Builder, Iterator, Strategy, Template Method, Visitor.
 6. Tight coupling: Abstract Factory, Bridge, Chain of Responsibility, Command, Facade, Mediator, Observer.
 7. Extending functionality by subclassing: Bridge, Chain of Responsibility, Composite, Decorator, Observer, Strategy.
-8. Inability to alter class convinientyly: Adapter, Decorator, Visitor.
+8. Inability to alter class conveniently: Adapter, Decorator, Visitor.
 
 ### Design Priorities for Different Types of Programs
 
 A toolkit specifies utilities can be used to build software for a specific application domain, the implementer needs to design the application and call code in the toolkit they want to reuse; a framework designs the application, and calls code written by the implementer, thus the implementer has less design choices to make.
 
-Loose coupling, flexibility, extensibility and good documentation are extremly important in the design of a framework.
+Loose coupling, flexibility, extensibility and good documentation are extremely important in the design of a framework.
 
 | Program Type | Main Focus | Difficulty (Video Game Metric) |
 | - | - | - |
-| Application | internal reuse, maintainability, extention | Hard |
-| Toolkit | code reuse | Nighmare |
+| Application | internal reuse, maintainability, extension | Hard |
+| Toolkit | code reuse | Nightmare |
 | Framework | design reuse | Hell |
